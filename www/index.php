@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="app/assets/styles/style.css"/>
 </head>
 
-<body data-ng-app="jobSeekerApp" data-ng-controller="DemoController">
+<body data-ng-app="jobSeekerApp">
 
 <div class="site-wrapper">
 
@@ -25,10 +25,6 @@
                         <!-- NAVIGATION -->
                         <a class="nav-link" ui-sref="login" ui-sref-active="active">Login/Register</a>
                         <a class="nav-link" ui-sref="taskList" ui-sref-active="active">Active tasks</a>
-                        <!--						<a class="nav-link" ui-sref="myTasksCustomer" ui-sref-active="active">My Tasks</a>-->
-                        <!--						<a class="nav-link" ui-sref="myTasksExecutor" ui-sref-active="active">My Tasks</a>-->
-
-
                     </nav>
                 </div>
             </div>
