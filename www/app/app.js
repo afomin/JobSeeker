@@ -6,49 +6,56 @@ jobSeekerApp.config(function ($stateProvider, $urlRouterProvider) {
     let loginState = {
         name: 'login',
         url: '/login',
-        templateUrl: 'app/views/login.php'
+        templateUrl: 'app/views/login.html'
+    };
+
+    let registerState = {
+        name: 'register',
+        url: '/register',
+        controller: 'registerController',
+        templateUrl: 'app/views/register.html'
     };
 
     let taskListState = {
         name: 'taskList',
         url: '/',
-        templateUrl: 'app/views/taskList.php'
+        templateUrl: 'app/views/taskList.html'
     };
 
     $stateProvider.state(loginState);
+    $stateProvider.state(registerState);
     $stateProvider.state(taskListState);
 
 
 });
 
-// .state('portfolio', {
-//     url: '/portfolio',
-//     component: 'portfolio',
-//     resolve: {
-//         projects: function (PortfolioService) {
-//             return PortfolioService.findAll();
-//         }
-//     }
-// })
-//
-// .component('portfolio', {
-//     bindings: {},
-//
-//     controller: function (PROJECTS) {
-//
-//         //define component's behavior here by linking methods and variables to this.
-//         // this.projects = PROJECTS;
-//         this.projects = [
-//
-//             {name: "Project 1", description: "Project 1 description"},
-//             {name: "Project 2", description: "Project 2 description"},
-//
-//         ];
-//
-//         console.log(this.projects);
-//     },
-//     template: `
-//     <h1>Portfolio</h1>
-//
-// `
-// });
+jobSeekerApp.factory('factoryname', function () {
+    return {
+        insertData: function ($scope, $http) {
+            var json_data = JSON.stringify($scope.formData);
+
+
+            $http.post($scope.formSubmitUrl, json_data, {
+                withCredentials: true,
+                headers: {'Content-Type': 'application/json'},
+                transformRequest: angular.identity
+            }).then(function (success) {
+                console.log(success);
+            });
+        }
+    }
+});
+
+jobSeekerApp.controller('authController', ['$scope', '$http', '$rootScope', 'factoryname', function ($scope, $http, $rootScope, factoryname) {
+
+    $scope.registerNewUser = function () {
+        $scope.formSubmitUrl = "app/actions/register.php"
+        $scope.formFactory = factoryname.insertData($scope, $http);
+
+    };
+    $scope.login = function () {
+        $scope.formSubmitUrl = "app/actions/login.php"
+        $scope.formFactory = factoryname.insertData($scope, $http);
+
+    }
+}]);

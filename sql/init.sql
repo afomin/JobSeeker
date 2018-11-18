@@ -1,4 +1,4 @@
-create table if not exists Role
+create table if not exists role
 (
   id
   INT
@@ -18,7 +18,7 @@ values ('Executor');
 insert into Role(name)
 values ('Customer');
 
-create table if not exists User
+create table if not exists user
 (
   id
   INT
@@ -33,6 +33,19 @@ create table if not exists User
   255
 ),
   role_id INT,
+  primary key
+(
+  id
+)
+  );
+
+create table if not exists active_session
+(
+  id VARCHAR
+(
+  40
+),
+  user_id INT,
   primary key
 (
   id

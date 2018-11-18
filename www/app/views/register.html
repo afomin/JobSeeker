@@ -1,0 +1,22 @@
+<form class="form" ng-controller="authController" ng-submit="registerNewUser()">
+    <div class="modal-header">
+        <h3 class="text-center">User Registration</h3>
+    </div>
+    <div class="modal-body">
+        <div class="form-group">
+            <input class="form-control input-sm" name="login" placeholder="Login" type="text">
+        </div>
+        <div class="form-group">
+            <input class="form-control input-sm" name="password" placeholder="password" type="password">
+        </div>
+        <div class="form-group">
+            <select name="role">
+                <option value="Executor">User (job executor)</option>
+                <option value="Customer">Customer (job publisher)</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-default">Register</button>
+    </div>
+</form>
